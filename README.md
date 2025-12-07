@@ -7,7 +7,7 @@ This is a GitHub Action that allows you to fetch the summary and description of 
 Add the action to your pull request workflow, which searches for Jira story keys with the project key `ABC`:
 ```yml
   - name: Get summary from Jira
-    uses: nora-soderlund/jira-summary-action@v0.9.1
+    uses: nora-soderlund/jira-summary-action@v0.9.3
     with:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -47,7 +47,7 @@ jobs:
       
       - id: story
         name: Get summary from Jira
-        uses: nora-soderlund/jira-summary-action@v0.9.1
+        uses: nora-soderlund/jira-summary-action@v0.9.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -73,10 +73,12 @@ jobs:
 | JIRA_KEY_MULTIPLE | Boolean | false | If true and JIRA_KEY is a project key, post a comment for every story key found. |
 | JIRA_PARTIAL_KEY_SILENT_FAILURE | Boolean | false | If true, not finding a story key in a pull request if a project key is specified, only throws a silent error. |
 | DISABLE_PULL_REQUEST_COMMENT | Boolean | false | If true, using the action will not create or update a pull request comment. Useful for only fetching the issue details from the output. |
+| IGNORE_BRANCHES | Regex | - | If source branch name mathces this regex ignore pull request. |
 
 ### Outputs
 | Output | Type | Description |
 | ------ | ---- | ----------- |
+| key | String | Matched JIRA key. |
 | title | String | If JIRA_KEY_MULTIPLE is false, the title of the linked story. |
 | description | String | If JIRA_KEY_MULTIPLE is false, the description of the linked story in markdown. |
 

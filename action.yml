@@ -35,7 +35,13 @@ inputs:
   DISABLE_PULL_REQUEST_COMMENT:
     description: If true, using the action will not create or update a pull request comment. Useful for only fetching the issue details from the output.
 
+  IGNORE_BRANCHES:
+    description: If source branch name mathces this regex ignore pull request.
+
 outputs:
+  key:
+    description: The key of the Jira story.
+
   title:
     description: The title of the Jira story.
 
